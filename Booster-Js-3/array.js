@@ -6,19 +6,22 @@ For example if a name is "Ali Mallak," the corresponding entry in the new array 
 */
 
 let names = [
-  'Mehdi Azimi',
-  'Jamal Shamsi',
-  'Mehdi Baqri',
-  'Fatemeh Hemmati',
-  'Mina Borhani',
-  'Hoseyn vafadar',
+  "Mehdi Azimi",
+  "Jamal Shamsi",
+  "Mehdi Baqri",
+  "Fatemeh Hemmati",
+  "Mina Borhani",
+  "Hoseyn vafadar",
 ];
 
-const arrOfFirstNames = // write your code here
-  ///
-  arrOfFirstNames.forEach((name) => {
-    console.log(name);
-  });
+const arrOfFirstNames = names.map((name) => {
+  const space = name.indexOf(" ");
+  return name.slice(0, space);
+}); // write your code here
+///
+arrOfFirstNames.forEach((name) => {
+  console.log(name);
+});
 
 /* EXPECTED OUTPUT 
     "Mehdi"

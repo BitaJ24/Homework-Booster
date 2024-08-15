@@ -7,7 +7,7 @@
 const mentors = ["Bahar", "Fatemeh", "Mahjan"];
 const students = ["Arad", "Pedram", "AmirMostafa", "Mohsen"];
 
-const everyone; // complete this statement
+const everyone = mentors.concat(students); // complete this statement
 
 /* 
   DO NOT EDIT BELOW THIS LINE
