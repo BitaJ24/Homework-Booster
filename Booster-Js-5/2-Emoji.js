@@ -17,10 +17,6 @@ const sad = document.querySelector("#Sad");
 const angry = document.querySelector("#Angry");
 const random = document.querySelector("#Random");
 
-const BaseURLOne = "https://api.api-ninjas.com/v1/emoji";
-// "XPQlJitgPEoOZABheVfcFg==TUh2r7s1DXxVwK16"
-// didn't work
-
 const BaseURLTwo =
   "https://emoji-api.com/categories/smileys-emotion?access_key=94b443396bd67a1cc91ee7fe8bbb99ac271b2a4b";
 
