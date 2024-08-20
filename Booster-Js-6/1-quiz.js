@@ -1,4 +1,4 @@
-const apiKey = '';
+const apiKey = '3fef980b8eb4a00f93b24794dc8920c7';
 const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=CityName&units=imperial&appid=${apiKey}`;
 
 /**
