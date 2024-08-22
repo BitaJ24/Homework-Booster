@@ -1,5 +1,5 @@
-const apiKey = '3fef980b8eb4a00f93b24794dc8920c7';
-const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=CityName&units=imperial&appid=${apiKey}`;
+const apiKey = "3fef980b8eb4a00f93b24794dc8920c7";
+const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=cityName&units=imperial&appid=${apiKey}`;
 
 /**
    * Create a  forecast weather program to which take a city name an return the weather situation of the city.
@@ -24,3 +24,49 @@ const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=CityName&unit
    * to access to description => data.list[0].weather[0].description
 
    */
+
+const info = document.querySelector("#weather-info");
+const status = document.querySelector("#status");
+
+function fetchWeather(city) {
+  return new Promise(async (resolve, reject) => {
+    const res = await fetch(apiUrl.replace("cityName", city));
+    // console.log(res);
+
+    // res.ok in if or =>
+    if (res.status >= 200 && res.status <= 299) {
+      const data = await res.json();
+      // console.log(data);
+      resolve(data);
+    } else {
+      reject("Failed to fetch weather information. Please try again later.");
+    }
+  });
+}
+
+async function setWeatherInfo(city) {
+  try {
+    const result = await fetchWeather(city);
+    status.style.display = "none";
+    // console.log(result);
+
+    const cityName = document.createElement("p");
+    cityName.innerText = `City: ${result.city.name}`;
+    cityName.style.fontSize = "18px";
+
+    const temperature = document.createElement("p");
+    temperature.innerText = `Temperature: ${result.list[0].main.temp}°C`;
+    temperature.style.fontSize = "18px";
+
+    const weatherDescription = document.createElement("p");
+    weatherDescription.innerText = `Weather: ${result.list[0].weather[0].description}`;
+    weatherDescription.style.fontSize = "18px";
+
+    info.append(cityName, temperature, weatherDescription);
+  } catch (error) {
+    status.innerText = error;
+    status.style.fontSize = "18px";
+    // console.error(error);
+  }
+}
+setWeatherInfo("tehran");
